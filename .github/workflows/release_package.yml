@@ -28,11 +28,15 @@ jobs:
       - name: Run tests
         run: yarn test
 
+      # Compile
+      - name: Compile
+        run: tsc
+
       # Pack
       - name: Build package
         run: |
           mkdir artifacts
-          yarn pack --out /artifacts/%s-%v.tgz
+          yarn pack --filename ./artifacts/%s-%v.tgz
 
       # Upload artifact
       - name: Upload artifact
