@@ -28,6 +28,17 @@ jobs:
       - name: Run tests
         run: yarn test
 
+      # Pack
+      - name: Build package
+        run: mkdir artifacts && yarn pack --out /artifacts/%s-%v.tgz
+
+      # Upload artifact
+      - name: Upload artifact
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tt-permissions
+          path: artifacts/*.tgz
+
       # Configure Git
       - name: Git configuration
         run: |
