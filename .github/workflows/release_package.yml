@@ -30,20 +30,13 @@ jobs:
 
       # Compile
       - name: Compile
-        run: tsc
+        run: yarn tsc
 
       # Pack
       - name: Build package
         run: |
-          mkdir artifacts
-          yarn pack --filename ./artifacts/%s-%v.tgz
-
-      # Upload artifact
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: tt-permissions
-          path: artifacts/*.tgz
+          mkdir ./artifacts
+          yarn pack --filename ./artifacts/tt-permissions.tgz
 
       # Configure Git
       - name: Git configuration
@@ -116,5 +109,6 @@ jobs:
           tag_name: ${{ env.NEW_VERSION }}
           body: ${{ steps.get-changelog.outputs.changelog }}
           prerelease: ${{ startsWith(github.event.inputs.release-type, 'pre') }}
+          files: ./artifacts/tt-permissions.tgz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
