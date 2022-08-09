@@ -70,6 +70,6 @@ if (permissionSet.Can(TTActions.C, ResourceInvite)) {
 }
 
 if (permissionSet.Can(TTActions.UD, ResourceInvite) === false) {
-    console.log('I can't update or delete invites !!!')
+    console.log('I can\'t update or delete invites !!!')
 }
 ```
