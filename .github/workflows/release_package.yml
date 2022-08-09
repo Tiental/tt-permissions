@@ -30,7 +30,9 @@ jobs:
 
       # Pack
       - name: Build package
-        run: mkdir artifacts && yarn pack --out /artifacts/%s-%v.tgz
+        run: |
+          mkdir artifacts
+          yarn pack --out /artifacts/%s-%v.tgz
 
       # Upload artifact
       - name: Upload artifact
