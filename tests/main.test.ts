@@ -1,6 +1,5 @@
 
-import { TTActions, TTPermissionSchema, TTResource } from '../src/tt_index'
-import { TTPermissionSet } from '../src/tt_permission_set'
+import { TTActions, TTPermissionSchema, TTResource, TTPermissionSet } from '../src/tt_index'
 
 describe('Testing...', () => {
     class ResourceUser extends TTResource {}
