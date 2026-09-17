@@ -8,9 +8,9 @@ You want to download the tt-permissions.tgz file.
 
 #### Add to project
 To install the package we recommend copying it into a shared folder in your repo.
-Then you can install the local package with
+For example, if you saved `tt-permissions.tgz` in `../packages/`, install that archive from your consuming project:
 
-> yarn add tt-permissions@file:../packages/tt-permissions
+> yarn add tt-permissions@file:../packages/tt-permissions.tgz
 
 
 ## Usage
@@ -22,8 +22,7 @@ A permission set is simply a set of granted actions on particular resources.
 
 Import the required classes from tt-permissions
 ```ts
-import { TTActions, TTPermissionSchema, TTResource } from '../src/tt_index'
-import { TTPermissionSet } from '../src/tt_permission_set'
+import { TTActions, TTPermissionSchema, TTResource, TTPermissionSet } from 'tt-permissions'
 ```
 
 Define your resources.
@@ -52,7 +51,7 @@ permissionSet.Grant(ResourceChannel, TTActions.CRUD)
 To get a serialized version of this permission set you can use `ToString()`
 This string can then be saved to the database and for example sent to the frontend to selectively show pages.
 ```ts
-const permissionSetString = ps.ToString()
+const permissionSetString = permissionSet.ToString()
 ```
 
 To get a permission set from a string you can use `FromString(somePermissionSetString)`
